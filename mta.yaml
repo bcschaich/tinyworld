@@ -1,0 +1,73 @@
+ID: tinyworld3
+_schema-version: '3.1'
+description: Tiny world tutorial
+modules:
+ - name: tinydb
+   requires:
+    - name: hdi_tinydb
+   type: com.sap.xs.hdi
+ - name: tinyjs
+   provides:
+    - name: tinyjs_api
+      properties:
+         url: ${default-url}
+   requires:
+    - name: tinydb
+    - name: hdi_tinydb
+   type: javascript.nodejs
+ - name: tinyui
+   parameters:
+      disk-quota: 256M
+      memory: 256M
+   requires:
+    - name: uaa_tinyworld3
+    - name: dest_tinyworld3
+    - group: destinations
+      name: tinyjs_api
+      properties:
+         name: tinyjs_be
+         url: ~{url}
+   type: javascript.nodejs
+ - name: tiny-mt-ar
+   parameters:
+      disk-quota: 256M
+      memory: 256M
+   properties:
+      TENANT_HOST_PATTERN: ^(.*)-tiny-mt-ar.api.cf.eu10.hana.ondemand.com
+   requires:
+    - name: uaa_tinyworld3
+    - group: destinations
+      name: tinyjs_api
+      properties:
+         name: tinyjs_api
+         url: ~{url}
+         forwardAuthToken: true
+   type: javascript.nodejs
+resources:
+ - name: hdi_tinydb
+   properties:
+      hdi-container-name: ${service-name}
+   type: com.sap.xs.hdi-container
+ - name: uaa_tinyworld3
+   parameters:
+      service-plan: application
+      service: xsuaa
+      config:
+         xsappname: tinyworld3
+         tenant-mode: dedicated
+         description: Security profile of called application
+         scopes:
+          - name: uaa.user
+            description: UAA
+         role-templates:
+          - name: Token_Exchange
+            description: UAA
+            scope-references:
+             - uaa.user
+   type: org.cloudfoundry.managed-service
+ - name: dest_tinyworld3
+   parameters:
+      service-plan: lite
+      service: destination
+   type: org.cloudfoundry.managed-service
+version: 1.0.1

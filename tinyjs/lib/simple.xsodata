@@ -1,0 +1,3 @@
+service { 
+  "tinyworld3.tinydb::world" as "world" keys generate local "ID" ; 
+}

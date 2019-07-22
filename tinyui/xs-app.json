@@ -1,0 +1,18 @@
+{
+  "welcomeFile": "/tinyui/index.html",
+  "authenticationMethod": "route",
+  "logout": {
+    "logoutEndpoint": "/do/logout"
+  },
+  "routes": [
+    {
+		"source": "^/euro.xsodata/.*$", 
+		"destination": "tinyjs_be"
+	},
+	{
+      "source": "^/tinyui/(.*)$",
+      "target": "$1",
+      "localDir": "webapp"
+    }
+  ]
+}
