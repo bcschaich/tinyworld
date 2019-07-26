@@ -81,4 +81,4 @@ resources:
       service-plan: lite
       service: destination
    type: org.cloudfoundry.managed-service
-version: 1.0.1
+version: 4.0.0
