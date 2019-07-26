@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="tinyworld3.tinydb::myview" applyPrivilegeType="NONE" dataCategory="DEFAULT" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="HOURLY" enforceSqlExecution="false">
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="tinyworld4.tinydb::myview" applyPrivilegeType="NONE" dataCategory="DEFAULT" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="HOURLY" enforceSqlExecution="false">
 <descriptions defaultDescription="myview"/>
 <localVariables/>
 <variableMappings/>
 <dataSources>
-  <DataSource id="tinyworld3.tinydb::tinyf.country">
-    <resourceUri>tinyworld3.tinydb::tinyf.country</resourceUri>
+  <DataSource id="tinyworld4.tinydb::tinyf.country">
+    <resourceUri>tinyworld4.tinydb::tinyf.country</resourceUri>
   </DataSource>
 </dataSources>
 <calculationViews>
@@ -20,7 +20,7 @@
     </viewAttributes>
     <calculatedViewAttributes/>
     <restrictedViewAttributes/>
-    <input node="tinyworld3.tinydb::tinyf.country">
+    <input node="tinyworld4.tinydb::tinyf.country">
       <mapping xsi:type="Calculation:AttributeMapping" target="name" source="name"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="part_of_continent" source="part_of.continent"/>
     </input>

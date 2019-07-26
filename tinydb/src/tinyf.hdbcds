@@ -1,4 +1,4 @@
-namespace tinyworld3.tinydb;
+namespace tinyworld4.tinydb;
 
 context tinyf {
     /*@@layout{"layoutInfo":{"x":-135,"y":-41}}*/
