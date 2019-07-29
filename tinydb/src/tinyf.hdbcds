@@ -8,7 +8,8 @@ context tinyf {
 
     /*@@layout{"layoutInfo":{"x":-405,"y":-139.5}}*/
     entity country {
-        name    : String(100);
-        part_of : association[0..1] to world { continent };
+        name       : String(100);
+        part_of    : association[0..1] to world { continent };
+        population : Decimal(10, 2);
     };
 };

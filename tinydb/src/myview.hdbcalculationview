@@ -11,18 +11,19 @@
 <calculationViews>
   <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_1" filterExpressionLanguage="SQL">
     <viewAttributes>
-      <viewAttribute id="name">
-        <descriptions defaultDescription="name"/>
-      </viewAttribute>
-      <viewAttribute id="part_of_continent">
-        <descriptions defaultDescription="part_of_continent"/>
-      </viewAttribute>
+      <viewAttribute id="name"/>
+      <viewAttribute id="part_of_continent"/>
+    
+      <viewAttribute id="name_1"/>
+      <viewAttribute id="part_of_continent_1"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <restrictedViewAttributes/>
     <input node="tinyworld4.tinydb::tinyf.country">
-      <mapping xsi:type="Calculation:AttributeMapping" target="name" source="name"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="part_of_continent" source="part_of.continent"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="name_1" source="name"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="part_of_continent_1" source="part_of.continent"/>
     </input>
     <filter>&quot;part_of_continent&quot;= 'Europe'</filter>
   </calculationView>
