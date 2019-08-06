@@ -54,6 +54,9 @@ modules:
          url: ~{url}
          forwardAuthToken: true
    
+
+ 
+
 resources:
  - name: tiny_db_HaaS
    properties:
@@ -81,4 +84,10 @@ resources:
       service-plan: lite
       service: destination
    type: org.cloudfoundry.managed-service
+
+ - name: hdi_test4
+   properties:
+      hdi-container-name_2: ${service-name}
+   type: com.sap.xs.hdi-container
+
 version: 4.0.0

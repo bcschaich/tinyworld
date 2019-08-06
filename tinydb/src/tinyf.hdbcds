@@ -10,6 +10,5 @@ context tinyf {
     entity country {
         name       : String(100);
         part_of    : association[0..1] to world { continent };
-        population : Decimal(10, 2);
     };
 };
