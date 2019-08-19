@@ -2,92 +2,76 @@ ID: tinyworld
 _schema-version: '3.1'
 description: Tiny world tutorial
 modules:
- - name: tinydb
-   type: hdb
-   path: tinydb
-   requires:
-    - name: tiny_db_HaaS
-
- - name: tinyjs
-   type: nodejs
-   path: tinyjs
-   provides:
-    - name: tinyjs_api
-      properties:
-         url: ${default-url}
-   requires:
-    - name: tinydb
-    - name: tiny_db_HaaS
-   
-   
- - name: tinyui
-   type: html5
-   path: tinyui
-   parameters:
+  - name: tinydb
+    type: hdb
+    path: tinydb
+    requires:
+      - name: tiny_db_HaaS
+  - name: tinyjs
+    type: nodejs
+    path: tinyjs
+    provides:
+      - name: tinyjs_api
+        properties:
+          url: '${default-url}'
+    requires:
+      - name: tinydb
+      - name: tiny_db_HaaS
+  - name: tinyui
+    type: html5
+    path: tinyui
+    parameters:
       disk-quota: 256M
       memory: 256M
-   requires:
-    - name: uaa_tinyworld4
-    - name: dest_tinyworld4
-    - group: destinations
-      name: tinyjs_api
-      properties:
-         name: tinyjs_be
-         url: ~{url}
-   
- - name: tiny-mt-ar
-   type: nodejs
-   path: tiny-mt-ar
-   parameters:
+    requires:
+      - name: uaa_tinyworld4
+      - name: dest_tinyworld4
+      - group: destinations
+        name: tinyjs_api
+        properties:
+          name: tinyjs_be
+          url: '~{url}'
+  - name: tiny-mt-ar
+    type: nodejs
+    path: tiny-mt-ar
+    parameters:
       disk-quota: 256M
       memory: 256M
-      
-
-   properties:
-      TENANT_HOST_PATTERN: ^(.*)-tiny-mt-ar.api.cf.eu10.hana.ondemand.com
-   requires:
-    - name: uaa_tinyworld4
-    - group: destinations
-      name: tinyjs_api
-      properties:
-         name: tinyjs_api
-         url: ~{url}
-         forwardAuthToken: true
-   
-
- 
-
+    properties:
+      TENANT_HOST_PATTERN: '^(.*)-tiny-mt-ar.api.cf.eu10.hana.ondemand.com'
+    requires:
+      - name: uaa_tinyworld4
+      - group: destinations
+        name: tinyjs_api
+        properties:
+          name: tinyjs_api
+          url: '~{url}'
+          forwardAuthToken: true
 resources:
- - name: tiny_db_HaaS
-   properties:
-      hdi-container-name: ${service-name}
-   type: com.sap.xs.hdi-container
- - name: uaa_tinyworld4
-   parameters:
+  - name: tiny_db_HaaS
+    properties:
+      hdi-container-name: '${service-name}'
+    type: com.sap.xs.hdi-container
+  - name: uaa_tinyworld4
+    parameters:
       service-plan: application
       service: xsuaa
       config:
-         xsappname: tinyworld4
-         tenant-mode: dedicated
-         description: Security profile of called application
-         scopes:
+        xsappname: tinyworld4
+        tenant-mode: dedicated
+        description: Security profile of called application
+        scopes:
           - name: uaa.user
             description: UAA
-         role-templates:
+        role-templates:
           - name: Token_Exchange
             description: UAA
             scope-references:
-             - uaa.user
-   type: org.cloudfoundry.managed-service
- - name: dest_tinyworld4
-   parameters:
+              - uaa.user
+    type: org.cloudfoundry.managed-service
+  - name: dest_tinyworld4
+    parameters:
       service-plan: lite
       service: destination
-   type: org.cloudfoundry.managed-service
-
- - name: hdi_test4
-   properties:
-      hdi-container-name_2: ${service-name}
-   type: com.sap.xs.hdi-container
-
+    type: org.cloudfoundry.managed-service
 version: 4.0.0

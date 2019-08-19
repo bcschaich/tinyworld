@@ -1,0 +1,9 @@
+{
+	"appId": "tinyworld4!t2248",
+	"displayName": "tinyWorld",
+	"description": "A sample tiny world app to explain the concepts of Multitenancy",
+	"category": "Provider A-TEam",
+	"appUrls": {
+		"onSubscription": "https://a-team-shared-d034365-provider-tinyui.cfapps.eu10.hana.ondemand.com/callback/v1.0/tenants/{tenantId}"
+	}
+}
